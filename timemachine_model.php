@@ -287,7 +287,7 @@ class Timemachine_model extends \Model
                 // Null the duration because we can't get that on 10.12+ *sad panda*
                 $this->duration = null;
 
-                if ($plist["Destinations"][0]["RESULT"] != "0"){
+                if (array_key_exists(0, $plist["Destinations"]) && array_key_exists("RESULT", $plist["Destinations"][0]) && $plist["Destinations"][0]["RESULT"] != "0"){
                     // Record failure time using same format as legacy
                     $this->last_failure = date("Y-m-d H:i:s");
                     // Record the result for processing by the UI view
